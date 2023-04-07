@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import dotenv from "dotenv";
+import cors from "cors";
 import albumRoute from "./routes/album.js";
 dotenv.config();
 // import bodyParser from "body-parser";
@@ -20,6 +21,7 @@ mongoose
   });
 
 // Middleware
+app.use(cors());
 app.use(express.json()); // body parser before passing to route handler
 app.use("/api", albumRoute);
 // app.use(bodyParser.urlencoded({ extended: true }));
