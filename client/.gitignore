@@ -16,7 +16,8 @@ node_modules
 *.jar
 *.pyc
 
-
+# Ignore git directory
+.git/
 
 # Ignore Visual Studio Code configuration files
 .vscode/
