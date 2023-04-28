@@ -1,3 +1,12 @@
+const functions = require("firebase-functions");
+
+// // Create and deploy your first functions
+// // https://firebase.google.com/docs/functions/get-started
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//   functions.logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
 const express = require("express");
 const mongoose = require("mongoose");
 const { join } = require("path");
@@ -28,9 +37,6 @@ app.get("/", function (req, res) {
   res.sendFile(join(__dirname, "index.html"));
 });
 
-const port = process.env.PORT || 8080;
-app.listen(8083, () => {
-  console.log(`Server listening on port ${port}`);
-});
+exports.app = functions.https.onRequest(app);
 
 module.exports = app;

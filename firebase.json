@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": "client/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/**",
+        "function": "app"
+      }
+    ]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 5033
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "runtime": "nodejs16",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
+}

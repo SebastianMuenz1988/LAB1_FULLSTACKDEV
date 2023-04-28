@@ -1,12 +1,10 @@
-// import axios from "axios";
-
 const albumTableBody = document.getElementById("album-table-body");
 const albumForm = document.getElementById("album-form");
-
+const serverUrl = "https://us-central1-lab-1-deployment.cloudfunctions.net/app";
 function fetchAlbums() {
   //do this with await
   axios
-    .get("http://localhost:3000/api/albums")
+    .get(`${serverUrl}/api/albums`)
     .then((response) => {
       const albums = response.data; // .data for access the property of axios response object
       albumTableBody.innerHTML = ""; //clear table body
@@ -40,7 +38,7 @@ function fetchAlbums() {
           };
 
           axios
-            .put(`http://localhost:3000/api/albums/${album._id}`, updatedAlbum)
+            .put(`${serverUrl}/api/albums/${album._id}`, updatedAlbum)
             .then(() => {
               fetchAlbums();
               albumForm.reset();
@@ -57,7 +55,7 @@ function fetchAlbums() {
         deleteButton.addEventListener("click", () => {
           if (confirm("Are you sure you want to delete this album?")) {
             axios
-              .delete(`http://localhost:3000/api/albums/${album._id}`)
+              .delete(`${serverUrl}/api/albums/${album._id}`)
               .then(() => {
                 fetchAlbums();
               })
@@ -102,7 +100,7 @@ albumForm.addEventListener("submit", (event) => {
   };
 
   axios
-    .post("http://localhost:3000/api/albums", newAlbum)
+    .post(`${serverUrl}/api/albums`, newAlbum)
     .then(() => {
       fetchAlbums();
       albumForm.reset();
