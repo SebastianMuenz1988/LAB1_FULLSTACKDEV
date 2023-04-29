@@ -17,16 +17,21 @@ mongoose
     console.log(err);
   });
 
+const corsOptions = {
+  origin: "https://lab-1-deployment.web.app",
+  optionsSuccessStatus: 200,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api", albumRoute);
 
 // Basic route
-app.get("/", function (req, res) {
-  console.log(join(__dirname, "index.html"));
-  res.sendFile(join(__dirname, "index.html"));
-});
+// app.get("/", function (req, res) {
+//   console.log(join(__dirname, "index.html"));
+//   res.sendFile(join(__dirname, "index.html"));
+// });
 
 const port = process.env.PORT || 8080;
 app.listen(8083, () => {
